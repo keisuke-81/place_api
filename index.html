@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>レッツイーティング</title>
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- test.htmlのためのstyleseet -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet"
+      href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+      integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous"> -->
+  </head>
+  <style>
+    .main {
+      margin: 0 auto;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 20px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1 class="heading">レッツ！イーティング</h1>
+      <h２>＊みんなでガンガンミーティングで盛り上がり、ガツガツイーティングして楽しもう！</h２>
+      <!-- <p class="note">
+        ルームモード (sfuサーバは多人数通話や映像配信用)<br>(MeshサーバはP2P通信を複数同時に利用したフルメッシュ接続という方式で多人数通話を実現)):
+        <a href="#">mesh</a> / <a href="#sfu">sfu</a>
+      </p> -->
+      <div class="room">
+        <div>
+          <video id="js-local-stream"></video>
+          <span id="js-room-mode"></span>:
+          <input type="text" placeholder="Room Name" id="js-room-id">
+          <button id="js-join-trigger">参加</button>
+          <button id="js-leave-trigger">退出</button>
+        </div>
+<!-- place_api_start-------------------------------------------------- -->
+        <div>
+            <table>
+              <tr>
+                <td>検索場所：</td>
+                <td><input type="text" id="addressInput" value="伊佐市" style="width: 200px"></td>
+              </tr>
+              <tr>
+                <td>KeyWord：</td>
+                <td><input type="text" id="keywordInput" value="ランチ" style="width: 200px"></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding: 10px">
+                  <input type="button" value="お店情報取得" onclick="getPlaces();">
+                </td>
+              </tr>
+            </table>
+            
+            
+            ★結果★<br>
+            <div id="results"
+              style="width: 90%; height: 200px; border: 1px dotted; padding: 10px; overflow-y: scroll; background: white;"></div>
+            <!-- <div>
+              お店紹介：<input type="textarea" value="">
+            
+            </div> -->
+        </div>
+<!-- place_api_end-------------------------------------------------- -->
+
+        <div class="remote-streams" id="js-remote-streams"></div>
+      </div>
+      <p class="meta" id="js-meta"></p>
+    </div>
+<!-- test.htmlのぶぶん -->
+    <!-- <div class="main">
+
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, world!!</h1>
+        <p class="lead">This is mebee This is mebee This is mebee</p>
+        <hr class="my-4">
+        <p>drop drop drop drop drop</p>
+      </div>
+
+      <div style="width: 400px;height: 500px;" id="drop">
+
+        <div class="w-50 p-3 h-25 border border-secondary rounded"></div>
+        <div class="w-50 p-3 h-25 border border-secondary rounded"></div>
+        <div class="w-50 p-3 h-25 border border-secondary rounded"></div>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+      </div> -->
+
+    </div>
+    <div class="container center back_color">
+      <div>
+      <pre class="messages" id="js-messages"></pre>
+      <input type="text" id="js-local-text">
+      <button id="js-send-trigger">送信</button>
+    </div>
+    </div>
+    
+
+
+    <script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.4.js"></script>
+    <script src="./key.js"></script>
+    <script src="./script.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=your_key&libraries=places"></script>
+    <script src="./index.js"></script>
+    <script>
+
+      onload = () => {
+
+        drop.addEventListener('dragover', (e) => {
+          e.preventDefault();
+        });
+
+
+        drop.addEventListener('drop', (e) => {
+          e.preventDefault();
+          e.target.textContent = e.dataTransfer.getData('text');
+        });
+
+      }
+
+    </script>
+  </body>
+</html>
